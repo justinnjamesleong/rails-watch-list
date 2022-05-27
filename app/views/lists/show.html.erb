@@ -1,6 +1,10 @@
 <h2>Movies within category: <%=@list.name%>  </h2>
-
+<ul>
+<li>
+<% @list.movies.each do |movie| %>
+<%= movie.title %>
+<% end %>
+</li>
+</ul>
 <%= link_to "Add a Bookmark", new_list_bookmark_path(@list) %>
- <%= link_to 'delete this Bookmark', lists_path, method: :delete, data: { confirm: 'Are you sure you want to delete this bookmark?' } %>
-
 <%= link_to "Back to Lists", lists_path  %>
