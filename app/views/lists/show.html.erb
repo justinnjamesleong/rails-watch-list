@@ -1,8 +1,11 @@
 <h2>Movies within category: <%=@list.name%>  </h2>
-<ul>
-<li><% @list.movies.each do |movie| %></li>
-<% bookmark = Bookmark.find_by(list: @list, movie: movie) %>
-</p><%= movie.title %>
+  <% if @list.photo.attached? %>
+    <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path @list.photo.key, height: 300, crop: :fill %>')"></div>
+  <% end %>
+  <ul>
+    <li><% @list.movies.each do |movie| %></li>
+      <% bookmark = Bookmark.find_by(list: @list, movie: movie) %>
+        </p><%= movie.title %>
 <%= link_to "Delete",
             bookmark_path(bookmark),
             method: :delete,
